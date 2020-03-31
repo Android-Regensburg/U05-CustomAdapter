@@ -7,8 +7,12 @@ import java.util.Locale;
 
 public class TaskItem {
 
-    public TaskItem(String task, String date) {
+    private String task;
+    private GregorianCalendar date;
 
+    public TaskItem(String task, String date) {
+        this.task = task;
+        this.date = getDateFromString(date);
     }
 
     private GregorianCalendar getDateFromString(String date) {
@@ -25,11 +29,15 @@ public class TaskItem {
         return cal;
     }
 
-    public String getFormattedDate(GregorianCalendar date) {
+    public String getFormattedDate() {
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
                 Locale.GERMANY);
 
         return df.format(date.getTime());
+    }
+
+    public String getTask() {
+        return task;
     }
 
 }

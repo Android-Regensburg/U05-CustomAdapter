@@ -12,17 +12,20 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private EditText input;
+    private EditText inputText;
+    private EditText inputDate;
     private Button addButton;
     private ListView listView;
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> todoList;
+    private ToDoListAdapter adapter;
+    private ArrayList<TaskItem> todoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +38,49 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void findViews() {
-        input = findViewById(R.id.todo_editText);
+        inputText = findViewById(R.id.task_editText);
+        inputDate = findViewById(R.id.date_editText);
         addButton = findViewById(R.id.todo_button);
         listView = findViewById(R.id.todo_listView);
     }
 
     private void setupViews() {
+        initDateView();
+        initListView();
+        initButton();
+    }
+
+    private void initDateView() {
+        inputDate.setFocusable(false);
+        inputDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createDatePickerDialog().show();
+            }
+        });
+    }
+
+    private void initButton() {
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String task = inputText.getText().toString().trim();
+                String date = inputDate.getText().toString().trim();
+
+                if (!task.isEmpty() && !date.isEmpty()) {
+                    TaskItem taskItem = new TaskItem(task, date);
+                    todoList.add(taskItem);
+                    adapter.notifyDataSetChanged();
+                    inputText.setText("");
+                    inputDate.setText("");
+                }
+            }
+        });
+    }
+
+    private void initListView() {
         todoList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, todoList);
+        adapter = new ToDoListAdapter(this, todoList);
         listView.setAdapter(adapter);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -50,19 +88,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 todoList.remove(position);
                 adapter.notifyDataSetChanged();
                 return true;
-            }
-        });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newTask = input.getText().toString().trim();
-
-                if (!newTask.isEmpty()) {
-                    todoList.add(newTask);
-                    adapter.notifyDataSetChanged();
-                    input.setText("");
-                }
             }
         });
     }
@@ -79,6 +104,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         GregorianCalendar date = new GregorianCalendar(year, month, dayOfMonth);
-        //Code
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
+                Locale.GERMANY);
+        String dateString = df.format(date.getTime());
+        inputDate.setText(dateString);
     }
 }

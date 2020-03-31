@@ -4,4 +4,5 @@
     <string name="todo_header">Current Tasks</string>
     <string name="todo_task_hint">New Task</string>
     <string name="todo_button">Add</string>
+    <string name="due_date">Due Date</string>
 </resources>
