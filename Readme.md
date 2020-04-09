@@ -4,8 +4,8 @@
 
 ## Downloads
 
-- [Download des Starterpakets](https://github.com/Android-Regensburg/U05-CustomAdapter/archive/master.zip)
-- [Download des Lösungsvorschlag](https://github.com/Android-Regensburg/U05-CustomAdapter/archive/solution.zip)
+- [Download des Starterpakets](https://github.com/Android-Regensburg/U05-ToDo-Liste-Mit-Datum/archive/master.zip)
+- [Download des Lösungsvorschlag](https://github.com/Android-Regensburg/U05-ToDo-Liste-Mit-Datum/archive/solution.zip)
 
 
 ## Aufgabe
