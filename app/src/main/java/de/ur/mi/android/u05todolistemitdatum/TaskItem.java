@@ -1,9 +1,10 @@
-package de.ur.mi.android.base;
+package de.ur.mi.android.u05todolistemitdatum;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class TaskItem {
 
@@ -16,7 +17,7 @@ public class TaskItem {
 
         try {
             DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
-            cal.setTime(df.parse(date));
+            cal.setTime(Objects.requireNonNull(df.parse(date)));
         } catch (ParseException e) {
             //Wenn parsing fehlschlägt benutzt der erstellte GregCalender automatisch das aktuelle Datum
             e.printStackTrace();
