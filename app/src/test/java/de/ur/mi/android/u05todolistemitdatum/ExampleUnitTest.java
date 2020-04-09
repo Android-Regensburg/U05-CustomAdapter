@@ -1,4 +1,4 @@
-package de.ur.mi.android.base;
+package de.ur.mi.android.u05todolistemitdatum;
 
 import org.junit.Test;
 

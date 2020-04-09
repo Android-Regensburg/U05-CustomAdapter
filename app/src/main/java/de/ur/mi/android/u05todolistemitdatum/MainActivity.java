@@ -1,4 +1,4 @@
-package de.ur.mi.android.base;
+package de.ur.mi.android.u05todolistemitdatum;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.text.DateFormat;
@@ -20,9 +20,9 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private EditText inputText;
-    private EditText inputDate;
-    private Button addButton;
+    private EditText etTaskInput;
+    private EditText etDateInput;
+    private ImageButton btnAdd;
     private ListView listView;
     private ToDoListAdapter adapter;
     private ArrayList<TaskItem> todoList;
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void findViews() {
-        inputText = findViewById(R.id.task_editText);
-        inputDate = findViewById(R.id.date_editText);
-        addButton = findViewById(R.id.todo_button);
+        etTaskInput = findViewById(R.id.et_task);
+        etDateInput = findViewById(R.id.et_date);
+        btnAdd = findViewById(R.id.btn_add);
         listView = findViewById(R.id.todo_listView);
     }
 
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void initDateView() {
-        inputDate.setFocusable(false);
-        inputDate.setOnClickListener(new View.OnClickListener() {
+        etDateInput.setFocusable(false);
+        etDateInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createDatePickerDialog().show();
@@ -61,18 +61,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void initButton() {
-        addButton.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String task = inputText.getText().toString().trim();
-                String date = inputDate.getText().toString().trim();
+                String task = etTaskInput.getText().toString().trim();
+                String date = etDateInput.getText().toString().trim();
 
                 if (!task.isEmpty() && !date.isEmpty()) {
                     TaskItem taskItem = new TaskItem(task, date);
                     todoList.add(taskItem);
                     adapter.notifyDataSetChanged();
-                    inputText.setText("");
-                    inputDate.setText("");
+                    etTaskInput.setText("");
+                    etDateInput.setText("");
                 }
             }
         });
@@ -107,6 +107,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
                 Locale.GERMANY);
         String dateString = df.format(date.getTime());
-        inputDate.setText(dateString);
+        etDateInput.setText(dateString);
     }
 }

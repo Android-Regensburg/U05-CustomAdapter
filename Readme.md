@@ -76,6 +76,8 @@ Große Teile dieser Anleitung wurden aus der Übungsaufgabe 5 des Sommersemester
 
 ## Screenshots
 
-![Screenshot der fünften App](./docs/screenshot-1.png "Startbildschirm der App")
+<img src="./docs/screenshot1.png" alt="Startbildschirm der App" width="250"/>
 
-![Screenshot der fünften App](./docs/screenshot-2.png "Startbildschirm und Eingabe der App")
+<img src="./docs/screenshot2.png" alt="Startbildschirm und Eingabe der App" width="250"/>
+
+<img src="./docs/screenshot3.png" alt="Startbildschirm und ListView Anzeige der App" width="250"/>
