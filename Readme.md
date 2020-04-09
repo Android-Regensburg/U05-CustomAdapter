@@ -1,4 +1,4 @@
-# U05 | CustomAdapter
+# U05 | ToDo-Liste-Mit-Datum
 
 ![Cover für die vierte Übungsaufgabe](./docs/cover.png)
 
