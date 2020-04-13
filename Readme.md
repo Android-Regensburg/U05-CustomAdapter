@@ -1,6 +1,6 @@
 # U05 | ToDo-Liste-Mit-Datum
 
-![Cover für die fünfte Übungsaufgabe](./docs/cover.png)
+![Cover für die vierte Übungsaufgabe](./docs/cover-1.png)
 
 ## Downloads
 
@@ -10,35 +10,37 @@
 
 ## Aufgabe
 
-Erweitern Sie das bereitgestellte Starter-Projekt zu dieser Übung. Der Nutzer muss nun, zusätzlich zum Task-Titel, auch ein Fälligkeitsdatum für jeden Task angeben. Dies geschieht über ein zusätzliches Eingabefeld (*siehe Screenshots*). Modellieren Sie den komplexen Datentyp `TaskItem` der den Titel und das Fälligkeitsdatum enthält. Anschließend müssen Sie ein Layout für die Listeneinträge anlegen. Um den View mit den Daten der `TaskItems` zu befüllen, schreiben Sie noch einen `TaskListAdapter`, welcher von `ArrayAdapter` erbt und diesen erweitert.
+Diese Aufgabe erweitert die ToDo-Liste aus U04. Beachten sie aber, dass nicht nur Code hinzugefügt werden, sondern auch ersetzt bzw. entfernt werden muss. Der Nutzer muss nun, zusätzlich zum Task-Titel, auch ein Fälligkeitsdatum für jeden Task angeben. Dies geschieht über ein zusätzliches Eingabefeld (*siehe Screenshots*). Modellieren Sie den komplexen Datentyp (neue Klasse) `TaskItem` der den Titel und das Fälligkeitsdatum enthält. Anschließend müssen Sie ein Layout für die Listeneinträge anlegen. Um das View mit den Daten der `TaskItems` zu befüllen, schreiben Sie noch einen `ToDoListAdapter`, welcher von `ArrayAdapter` erbt und diesen erweitert.
+
+<img src="./docs/screenshot3.png" alt="Startbildschirm und ListView Anzeige der App" width="250"/>
 
 ## Hinweise
 
-1. Der `ArrayAdapter` wird benötigt, um Daten mit einer `View` zu verbinden. Für komplexere `Views`, wie in dieser Übungsaufgabe, muss von `ArrayAdapter` geerbt und die Methode `getView()` überschrieben werden.
+1. Der `ArrayAdapter` wird benötigt, um Daten mit einem `View` zu verbinden. Für komplexere `Views`, wie in dieser Übungsaufgabe, muss von `ArrayAdapter` geerbt und die Methode `getView()` überschrieben werden.
 
-2. Der `DatePickerDialog` fordert den Benutzer auf, ein Datum mit Hilfe von drei Spinnern auszuwählen. Der `DatePickerDialog` ist bereits im Starter-Projekt integriert.
+2. Der `DatePickerDialog` fordert den Benutzer auf, ein Datum aus einem Kalender auszuwählen. Der `DatePickerDialog` ist bereits im Starter-Projekt integriert.
 
-3. Ein Datum wird in Java gewöhnlich als Objekt der Klasse `Date` gespeichert. Um dieses in einen formatierten `String` umzuwandeln (und umgekehrt) benutzt man die Klasse `DateFormat`. Für Umwandlungen zu einzelnen `Integern`, etwa für Tag, Monat und Jahr, benutzt man die Klasse `GregorianCalendar`.
+3. Ein Datum wird in Java gewöhnlich als Objekt der Klasse `Date` gespeichert. Um dieses in einen formatierten `String` umzuwandeln (und umgekehrt) benutzt man die Klasse `DateFormat`. Für Umwandlungen zu einzelnen `Integern`, etwa für Tag, Monat und Jahr, benutzt man die Klasse `GregorianCalendar`. Methoden dafür sind im Starterpaket schon enthalten.
+
+4. Tragen sie alle *Texte* die dem Nutzer angezeigt werden in die `strings.xml`-Datei ein.
+
+5. Damit die Höhe der `TaskItems` den Android Design Guidelines entspricht, kann man diese im Layout folgendermaßen definieren: `android:layout_height="?android:attr/listPreferredItemHeight"`
 
 ## Vorgehen
 
 ### Layout
 
-1. Laden Sie das Starter-Packet zur Übung herunter. Dabei handelt es sich um die Lösung zur Aufgabe von letzter Woche, die um einige Methoden und die Klasse `TaskItem` ergänzt wurde. Des Weiteren wurde die `ToDoActivity` um Methoden zur Abfrage des Datums ergänzt.
+1. Laden Sie das Starter-Packet zur Übung herunter. Dabei handelt es sich um die Lösung zur Aufgabe von letzter Woche, die um einige Methoden und die Klasse `TaskItem` ergänzt wurde. Des Weiteren wurde die `MainActivity` um Methoden zur Abfrage des Datums ergänzt.
 
 2. Passen Sie zunächst die `activity_main.xml` Layout-Datei an, wie in den Screenshots im Anhang zu sehen. Mit Hilfe des Attributs `android:focusable` können Sie verhindern, dass der Text im Datums-Textfeld manuell geändert werden kann (die Eingabe soll über den `DatePickerDialog` geschehen).
 
-3. Tragen Sie die zusätzlich benötigten Strings in die `strings.xml` ein.
+3. Erstellen Sie nun eine neue `layout.xml`-Datei im `layout`-Ordner, welche das Aussehen eines einzelnen `TaskItems` definiert. Es soll der Titel und das Fälligkeitsdatum nebeneinander gezeigt werden.
 
-4. Erstellen Sie nun eine neue `Layout.xml` im `layout`-Ordner, welche das Aussehen eines einzelnen `ListItems` definiert. Es soll jeweils der Titel und das Fälligkeitsdatum nebeneinander gezeigt werden. Damit die Höhe der `ListItems` den Android Design Guidelines entspricht, kann man sie folgendermaßen definieren: `android:layout_height="?android:attr/listPreferredItemHeight"` Sie können bequem eine neue `Layout.xml`-Datei anlegen, indem Sie mit der rechten Maustaste auf den `layout`-Ordner (unter res zu finden) klicken und im Kontextmenü „New“, „XML“ und dann „Layout XML file“ auswählen.
+### TaskItem-Klasse
 
-### ToDoItem-Klasse
+1. Ergänzen Sie nun die Klasse `TaskItem`, welche den Titel eines Tasks und sein Fälligkeitsdatum speichert.
 
-Ergänzen Sie nun die Klasse `TaskItem`, welche den Titel eines Tasks und sein Fälligkeitsdatum speichert.
-
-1. Der Konstruktor erwartet einen String für den Titel und einen String für das Datum.
-
-2. Erstellen Sie die benötigten Instanzvariablen und weisen sie deren Werte im Konstruktor zu.
+2. Erstellen Sie die benötigten Instanzvariablen und einen Konstruktor mit entsprechenden Parametern und weisen sie die Variablen entsprechend zu.
 
 3. Die Methode `getTask()` soll den Titel des Tasks zurückgeben.
 
@@ -50,9 +52,7 @@ Es fehlt nun noch ein Adapter, welcher den komplexen Datentyp `TaskItem` mit dem
 
 1. Überschreiben Sie die Methode `getView(int position, View convertView, ViewGroup parent)`. Sie soll mit Hilfe des `LayoutInflaters` einen `View` mit dem Layout des `ToDoItems` erstellen und die `TextViews` des Layouts mit den Daten des entsprechenden `TaskItems` befüllen.
 
-2. Passen Sie im Konstruktor die Referenz auf das Layout der `ListItems` an.
-
-3. Jetzt kann der `ToDoListAdapter` wie bisher der `ArrayAdapter` in der `ToDoActivity` verwendet werden.
+2. Passen Sie im Konstruktor die Referenz auf die Referenz des oben erstellten Layouts an.
 
 4. Nutzen sie die `getFormattedDate()`-Methode um das Datum als String aus einem `TaskItem` Objekt zu holen.
 
@@ -72,7 +72,7 @@ Es fehlt nun noch ein Adapter, welcher den komplexen Datentyp `TaskItem` mit dem
 
 ## Quellen
 
-Große Teile dieser Anleitung wurden aus der Übungsaufgabe 5 des Sommersemesters 2013 von Thomas Wagner übernommen, welche von Thomas Wilhelm und Jonas Roberts überarbeitet wurden.
+Große Teile dieser Anleitung wurden aus der Übungsaufgabe 5 des Sommersemesters 2013 von Thomas Wagner übernommen, welche von Thomas Wilhelm,Jonas Roberts und Tim Eichinger überarbeitet wurden.
 
 ## Screenshots
 
