@@ -2,17 +2,9 @@
 
 ![Cover für die vierte Übungsaufgabe](./docs/cover-1.png)
 
-## Downloads
-
-- [Download des Starterpakets](https://github.com/Android-Regensburg/U05-ToDo-Liste-Mit-Datum/archive/master.zip)
-- [Download des Lösungsvorschlag](https://github.com/Android-Regensburg/U05-ToDo-Liste-Mit-Datum/archive/solution.zip)
-
-
 ## Aufgabe
 
 Diese Aufgabe erweitert die ToDo-Liste aus U04. Beachten sie aber, dass nicht nur Code hinzugefügt werden, sondern auch ersetzt bzw. entfernt werden muss. Der Nutzer muss nun, zusätzlich zum Task-Titel, auch ein Fälligkeitsdatum für jeden Task angeben. Dies geschieht über ein zusätzliches Eingabefeld (*siehe Screenshots*). Modellieren Sie den komplexen Datentyp (neue Klasse) `TaskItem` der den Titel und das Fälligkeitsdatum enthält. Anschließend müssen Sie ein Layout für die Listeneinträge anlegen. Um das View mit den Daten der `TaskItems` zu befüllen, schreiben Sie noch einen `ToDoListAdapter`, welcher von `ArrayAdapter` erbt und diesen erweitert.
-
-<img src="./docs/screenshot3.png" alt="Startbildschirm und ListView Anzeige der App" width="250"/>
 
 ## Hinweise
 
@@ -76,8 +68,6 @@ Große Teile dieser Anleitung wurden aus der Übungsaufgabe 5 des Sommersemester
 
 ## Screenshots
 
-<img src="./docs/screenshot1.png" alt="Startbildschirm der App" width="250"/>
-
-<img src="./docs/screenshot2.png" alt="Startbildschirm und Eingabe der App" width="250"/>
-
-<img src="./docs/screenshot3.png" alt="Startbildschirm und ListView Anzeige der App" width="250"/>
+| | | |
+|-|-|-|
+|![Screenshot der Laufapp](./docs/screenshot1.png ){ height=8cm } |![Screenshot der Laufapp](./docs/screenshot2.png ){ height=8cm } |![Screenshot der Laufapp](./docs/screenshot3.png ){ height=8cm } |
