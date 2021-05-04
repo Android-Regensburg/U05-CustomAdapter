@@ -1,0 +1,7 @@
+{
+  "title": "Erweiterte ToDo-Liste",
+  "abstract": "In dieser Aufgabe implementieren Sie eine einfache ToDo-Liste. Mit einem angepassten ArrayAdapter und eigener View-Vorlage passen Sie das Erscheinungsbild der Liste an.",
+  "hasStarterCode": true,
+  "hasSolutionCode": true,
+  "solutionAvailableOn": "2021-05-13"
+}
